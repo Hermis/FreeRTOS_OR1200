@@ -27,4 +27,4 @@ Future work:
 
 2.Modify OpenRISC Memory Architecture
 
-2.Running benchmark(mibench)
+3.Running benchmark(mibench)
