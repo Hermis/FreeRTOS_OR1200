@@ -15,3 +15,12 @@ Project Step:
 2.Check your CCPATH(or1k Toolchain PATH) on Makefile
 
 3.make
+
+
+Future work:
+
+1.Support MMU.Cache
+
+2.Modify OpenRISC Memory Architecture
+
+2.Running benchmark(mibench)
