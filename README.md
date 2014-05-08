@@ -8,6 +8,8 @@ FPGA Board:
 
 2.De0_nano(Altera)
 
+//------------------------------------------------------------
+
 Project Step:
 
 1.cd FreeRTOS_OpenRISC/Demo/OpenRISC_OR1200_GCC/
@@ -17,6 +19,7 @@ Project Step:
 3.make
 
 
+//------------------------------------------------------------
 Future work:
 
 1.Support MMU.Cache
