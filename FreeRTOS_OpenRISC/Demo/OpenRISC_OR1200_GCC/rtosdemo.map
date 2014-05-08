@@ -1,0 +1,412 @@
+Archive member included because of file (symbol)
+
+./arch/libarch.a(support.o)   main.o (report)
+./arch/libarch.a(interrupts.o)
+                              main.o (int_init)
+./drivers/libdrivers.a(uart.o)
+                              main.o (uart_print_str)
+/opt/openrisc/toolchain/lib/gcc/or32-elf/4.5.1-or32-1.0rc4/libgcc.a(__divsi3.o)
+                              ./drivers/libdrivers.a(uart.o) (__divsi3)
+/opt/openrisc/toolchain/lib/gcc/or32-elf/4.5.1-or32-1.0rc4/libgcc.a(__modsi3.o)
+                              ./drivers/libdrivers.a(uart.o) (__modsi3)
+/opt/openrisc/toolchain/lib/gcc/or32-elf/4.5.1-or32-1.0rc4/libgcc.a(__udivsi3.o)
+                              /opt/openrisc/toolchain/lib/gcc/or32-elf/4.5.1-or32-1.0rc4/libgcc.a(__divsi3.o) (__udivsi3)
+/opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-longjmp.o)
+                              ../../Source/portable/GCC/OpenRISC/port.o (longjmp)
+/opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-memset.o)
+                              ../../Source/tasks.o (memset)
+/opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-setjmp.o)
+                              ../../Source/portable/GCC/OpenRISC/port.o (setjmp)
+/opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-strncpy.o)
+                              ../../Source/tasks.o (strncpy)
+
+Allocating common symbols
+Common symbol       size              file
+
+rx_level            0x4               ./drivers/libdrivers.a(uart.o)
+tx_level            0x4               ./drivers/libdrivers.a(uart.o)
+vTask1              0x4               main.o
+tx_buff             0x20              ./drivers/libdrivers.a(uart.o)
+LED                 0x4               main.o
+vTask2              0x4               main.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+vectors          0x00000000         0x00001100
+ram              0x00001200         0x0003ee00
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.vectors        0x00000000      0xe30
+                0x00000000                _vec_start = .
+ *(.vectors)
+ .vectors       0x00000000      0xe30 ./arch/reset.o
+                0x00000e30                _vec_end = .
+
+.text           0x00000e30     0x4e24
+ *(.text)
+ .text          0x00000e30       0x84 ./arch/reset.o
+ .text          0x00000eb4      0x5e4 ../../Source/portable/GCC/OpenRISC/portasm.o
+                0x00000eb4                vPortTickHandler
+                0x0000103c                vPortSystemCall
+                0x000011c0                vPortExtIntHandler
+                0x0000132c                vPortMiscIntHandler
+ .text          0x00001498      0x640 ../../Source/portable/GCC/OpenRISC/port.o
+                0x000014f4                pxPortInitialiseStack
+                0x0000185c                xPortStartScheduler
+                0x00001950                vPortEndScheduler
+                0x00001a4c                vPortDisableInterrupts
+                0x00001a94                vPortEnableInterrupts
+ .text          0x00001ad8      0x2a8 ../../Source/list.o
+                0x00001ad8                vListInitialise
+                0x00001b48                vListInitialiseItem
+                0x00001b70                vListInsertEnd
+                0x00001c04                vListInsert
+                0x00001ce8                vListRemove
+ .text          0x00001d80     0x241c ../../Source/tasks.o
+                0x00001d80                xTaskGenericCreate
+                0x00002074                vTaskDelete
+                0x000021bc                vTaskDelayUntil
+                0x00002390                vTaskDelay
+                0x000024b8                uxTaskPriorityGet
+                0x0000252c                vTaskPrioritySet
+                0x00002750                vTaskSuspend
+                0x000028a0                xTaskIsTaskSuspended
+                0x00002928                vTaskResume
+                0x00002a58                xTaskResumeFromISR
+                0x00002b98                vTaskStartScheduler
+                0x00002c34                vTaskEndScheduler
+                0x00002c74                vTaskSuspendAll
+                0x00002ca8                xTaskResumeAll
+                0x00002ec8                xTaskGetTickCount
+                0x00002f10                xTaskGetTickCountFromISR
+                0x00002f38                uxTaskGetNumberOfTasks
+                0x00002f60                vTaskIncrementTick
+                0x00003130                vTaskSetApplicationTaskTag
+                0x000031a4                xTaskGetApplicationTaskTag
+                0x0000321c                xTaskCallApplicationTaskHook
+                0x000032b8                vTaskSwitchContext
+                0x00003400                vTaskPlaceOnEventList
+                0x00003540                xTaskRemoveFromEventList
+                0x000036a4                vTaskSetTimeOutState
+                0x000036e8                xTaskCheckForTimeOut
+                0x00003818                vTaskMissedYield
+                0x00003ca4                uxTaskGetStackHighWaterMark
+                0x00003d60                xTaskGetCurrentTaskHandle
+                0x00003d90                xTaskGetSchedulerState
+                0x00003e08                vTaskPriorityInherit
+                0x00003f60                vTaskPriorityDisinherit
+                0x0000405c                vTaskEnterCritical
+                0x000040b4                vTaskExitCritical
+                0x00004144                uxTaskGetTaskNumber
+ .text          0x0000419c      0x418 ../../Source/portable/MemMang/heap_2.o
+                0x0000419c                pvPortMalloc
+                0x0000448c                vPortFree
+                0x00004584                xPortGetFreeHeapSize
+                0x000045ac                vPortInitialiseBlocks
+ .text          0x000045b4      0x208 main.o
+                0x000045b4                main
+                0x000046e0                LED_Delay
+                0x0000474c                vApplicationIdleHook
+                0x00004754                vApplicationTickHook
+                0x0000475c                vApplicationStackOverflowHook
+                0x00004788                vApplicationMallocFailedHook
+ .text          0x000047bc      0x16c ./arch/libarch.a(support.o)
+                0x000047bc                or32_exit
+                0x000047e0                report
+                0x0000480c                mtspr
+                0x0000483c                mfspr
+                0x00004878                flush_tlb_all
+ .text          0x00004928      0x904 ./arch/libarch.a(interrupts.o)
+                0x00004928                int_init
+                0x000049cc                int_add
+                0x00004a88                int_disable
+                0x00004b04                int_enable
+                0x00004b7c                int_main
+                0x00004c84                buserr_except
+                0x00004d20                dpf_except
+                0x00004d54                ipf_except
+                0x00004d88                align_except
+                0x00004dbc                illegal_except
+                0x00004dd8                dtlbmiss_except
+                0x00004e0c                itlbmiss_except
+                0x00004e28                timer_except
+                0x00004e5c                range_except
+                0x00004e78                res1_except
+                0x00004eac                trap_except
+                0x00004ec8                res2_except
+                0x00004efc                misc_int_handler
+                0x00005178                syscall_except
+ .text          0x0000522c      0x4e8 ./drivers/libdrivers.a(uart.o)
+                0x0000522c                uart_init
+                0x000052f4                uart_putc
+                0x000053a8                uart_print_str
+                0x00005408                uart_print_long
+                0x000054e8                uart_print_short
+                0x00005608                uart_print_int
+                0x000056bc                uart_getc
+ .text          0x00005714       0x64 /opt/openrisc/toolchain/lib/gcc/or32-elf/4.5.1-or32-1.0rc4/libgcc.a(__divsi3.o)
+                0x00005714                __divsi3
+ .text          0x00005778       0x5c /opt/openrisc/toolchain/lib/gcc/or32-elf/4.5.1-or32-1.0rc4/libgcc.a(__modsi3.o)
+                0x00005778                __modsi3
+ .text          0x000057d4       0xfc /opt/openrisc/toolchain/lib/gcc/or32-elf/4.5.1-or32-1.0rc4/libgcc.a(__udivsi3.o)
+                0x000057d4                __udivsi3
+ .text          0x000058d0       0x98 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-longjmp.o)
+                0x000058d0                longjmp
+ .text          0x00005968      0x140 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-memset.o)
+                0x00005968                memset
+ .text          0x00005aa8       0x80 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-setjmp.o)
+                0x00005aa8                setjmp
+ .text          0x00005b28      0x12c /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-strncpy.o)
+                0x00005b28                strncpy
+
+.rodata         0x00005c54       0xf4
+ *(.rodata)
+ .rodata        0x00005c54        0x5 ../../Source/tasks.o
+ *fill*         0x00005c59        0x1 00
+ .rodata        0x00005c5a        0x2 ../../Source/portable/MemMang/heap_2.o
+ .rodata        0x00005c5c       0x3c main.o
+ .rodata        0x00005c98       0xad ./arch/libarch.a(interrupts.o)
+ .rodata        0x00005d45        0x3 ./drivers/libdrivers.a(uart.o)
+ *(.rodata.*)
+
+.icm            0x00005d48        0x0
+                0x00005d48                _icm_start = .
+ *(.icm)
+                0x00005d48                _icm_end = .
+
+.data           0x00005d48        0x4
+                0x00005d48                _dst_beg = .
+ *(.data)
+ .data          0x00005d48        0x0 ./arch/reset.o
+ .data          0x00005d48        0x0 ../../Source/portable/GCC/OpenRISC/portasm.o
+ .data          0x00005d48        0x0 ../../Source/portable/GCC/OpenRISC/port.o
+ .data          0x00005d48        0x0 ../../Source/list.o
+ .data          0x00005d48        0x0 ../../Source/tasks.o
+ .data          0x00005d48        0x4 ../../Source/portable/MemMang/heap_2.o
+ .data          0x00005d4c        0x0 main.o
+ .data          0x00005d4c        0x0 ./arch/libarch.a(support.o)
+ .data          0x00005d4c        0x0 ./arch/libarch.a(interrupts.o)
+ .data          0x00005d4c        0x0 ./drivers/libdrivers.a(uart.o)
+ .data          0x00005d4c        0x0 /opt/openrisc/toolchain/lib/gcc/or32-elf/4.5.1-or32-1.0rc4/libgcc.a(__divsi3.o)
+ .data          0x00005d4c        0x0 /opt/openrisc/toolchain/lib/gcc/or32-elf/4.5.1-or32-1.0rc4/libgcc.a(__modsi3.o)
+ .data          0x00005d4c        0x0 /opt/openrisc/toolchain/lib/gcc/or32-elf/4.5.1-or32-1.0rc4/libgcc.a(__udivsi3.o)
+ .data          0x00005d4c        0x0 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-longjmp.o)
+ .data          0x00005d4c        0x0 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-memset.o)
+ .data          0x00005d4c        0x0 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-setjmp.o)
+ .data          0x00005d4c        0x0 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-strncpy.o)
+                0x00005d4c                _dst_end = .
+
+.bss            0x00005d4c     0x2728
+                0x00005d4c                _bss_beg = .
+ *(.bss)
+ .bss           0x00005d4c        0x0 ./arch/reset.o
+ .bss           0x00005d4c        0x0 ../../Source/portable/GCC/OpenRISC/portasm.o
+ .bss           0x00005d4c       0x7c ../../Source/portable/GCC/OpenRISC/port.o
+ .bss           0x00005dc8        0x0 ../../Source/list.o
+ .bss           0x00005dc8      0x164 ../../Source/tasks.o
+                0x00005dc8                pxCurrentTCB
+ .bss           0x00005f2c     0x2414 ../../Source/portable/MemMang/heap_2.o
+ .bss           0x00008340        0x0 main.o
+ .bss           0x00008340        0x0 ./arch/libarch.a(support.o)
+ .bss           0x00008340      0x100 ./arch/libarch.a(interrupts.o)
+ .bss           0x00008440        0x0 ./drivers/libdrivers.a(uart.o)
+ .bss           0x00008440        0x0 /opt/openrisc/toolchain/lib/gcc/or32-elf/4.5.1-or32-1.0rc4/libgcc.a(__divsi3.o)
+ .bss           0x00008440        0x0 /opt/openrisc/toolchain/lib/gcc/or32-elf/4.5.1-or32-1.0rc4/libgcc.a(__modsi3.o)
+ .bss           0x00008440        0x0 /opt/openrisc/toolchain/lib/gcc/or32-elf/4.5.1-or32-1.0rc4/libgcc.a(__udivsi3.o)
+ .bss           0x00008440        0x0 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-longjmp.o)
+ .bss           0x00008440        0x0 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-memset.o)
+ .bss           0x00008440        0x0 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-setjmp.o)
+ .bss           0x00008440        0x0 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-strncpy.o)
+                0x00008440                _bss_end = .
+ COMMON         0x00008440        0xc main.o
+                0x00008440                vTask1
+                0x00008444                LED
+                0x00008448                vTask2
+ COMMON         0x0000844c       0x28 ./drivers/libdrivers.a(uart.o)
+                0x0000844c                rx_level
+                0x00008450                tx_level
+                0x00008454                tx_buff
+                0x00040000                PROVIDE (_stack_top, 0x40000)
+START GROUP
+LOAD ./arch/reset.o
+LOAD ../../Source/portable/GCC/OpenRISC/portasm.o
+LOAD ../../Source/portable/GCC/OpenRISC/port.o
+LOAD ../../Source/list.o
+LOAD ../../Source/tasks.o
+LOAD ../../Source/portable/MemMang/heap_2.o
+LOAD main.o
+LOAD ./arch/libarch.a
+LOAD ./drivers/libdrivers.a
+LOAD /opt/openrisc/toolchain/lib/gcc/or32-elf/4.5.1-or32-1.0rc4/libgcc.a
+LOAD /opt/openrisc/toolchain//or32-elf/lib/libc.a
+LOAD /opt/openrisc/toolchain//or32-elf/lib/libm.a
+END GROUP
+OUTPUT(rtosdemo.or32 elf32-or32)
+
+.debug_abbrev   0x00000000      0xa07
+ .debug_abbrev  0x00000000      0x11b ../../Source/portable/GCC/OpenRISC/port.o
+ .debug_abbrev  0x0000011b       0xb6 ../../Source/list.o
+ .debug_abbrev  0x000001d1      0x19c ../../Source/tasks.o
+ .debug_abbrev  0x0000036d      0x16d ../../Source/portable/MemMang/heap_2.o
+ .debug_abbrev  0x000004da      0x14e main.o
+ .debug_abbrev  0x00000628       0xab ./arch/libarch.a(support.o)
+ .debug_abbrev  0x000006d3      0x151 ./arch/libarch.a(interrupts.o)
+ .debug_abbrev  0x00000824       0xba ./drivers/libdrivers.a(uart.o)
+ .debug_abbrev  0x000008de       0x9c /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-memset.o)
+ .debug_abbrev  0x0000097a       0x8d /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-strncpy.o)
+
+.debug_info     0x00000000     0x24cc
+ .debug_info    0x00000000      0x1e3 ../../Source/portable/GCC/OpenRISC/port.o
+ .debug_info    0x000001e3      0x29b ../../Source/list.o
+ .debug_info    0x0000047e     0x1229 ../../Source/tasks.o
+ .debug_info    0x000016a7      0x2c3 ../../Source/portable/MemMang/heap_2.o
+ .debug_info    0x0000196a      0x25b main.o
+ .debug_info    0x00001bc5      0x129 ./arch/libarch.a(support.o)
+ .debug_info    0x00001cee      0x385 ./arch/libarch.a(interrupts.o)
+ .debug_info    0x00002073      0x21e ./drivers/libdrivers.a(uart.o)
+ .debug_info    0x00002291      0x114 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-memset.o)
+ .debug_info    0x000023a5      0x127 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-strncpy.o)
+
+.debug_line     0x00000000     0x2573
+ .debug_line    0x00000000      0x313 ../../Source/portable/GCC/OpenRISC/port.o
+ .debug_line    0x00000313      0x1d7 ../../Source/list.o
+ .debug_line    0x000004ea     0x1056 ../../Source/tasks.o
+ .debug_line    0x00001540      0x260 ../../Source/portable/MemMang/heap_2.o
+ .debug_line    0x000017a0      0x192 main.o
+ .debug_line    0x00001932      0x116 ./arch/libarch.a(support.o)
+ .debug_line    0x00001a48      0x459 ./arch/libarch.a(interrupts.o)
+ .debug_line    0x00001ea1      0x26d ./drivers/libdrivers.a(uart.o)
+ .debug_line    0x0000210e      0x25d /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-memset.o)
+ .debug_line    0x0000236b      0x208 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-strncpy.o)
+
+.debug_frame    0x00000000      0xaa4
+ .debug_frame   0x00000000       0xd0 ../../Source/portable/GCC/OpenRISC/port.o
+ .debug_frame   0x000000d0       0x88 ../../Source/list.o
+ .debug_frame   0x00000158      0x400 ../../Source/tasks.o
+ .debug_frame   0x00000558       0x68 ../../Source/portable/MemMang/heap_2.o
+ .debug_frame   0x000005c0       0xd8 main.o
+ .debug_frame   0x00000698       0x90 ./arch/libarch.a(support.o)
+ .debug_frame   0x00000728      0x264 ./arch/libarch.a(interrupts.o)
+ .debug_frame   0x0000098c       0xc8 ./drivers/libdrivers.a(uart.o)
+ .debug_frame   0x00000a54       0x28 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-memset.o)
+ .debug_frame   0x00000a7c       0x28 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-strncpy.o)
+
+.debug_loc      0x00000000      0xf63
+ .debug_loc     0x00000000      0x100 ../../Source/portable/GCC/OpenRISC/port.o
+ .debug_loc     0x00000100       0xa0 ../../Source/list.o
+ .debug_loc     0x000001a0      0x540 ../../Source/tasks.o
+ .debug_loc     0x000006e0       0x60 ../../Source/portable/MemMang/heap_2.o
+ .debug_loc     0x00000740       0xe0 main.o
+ .debug_loc     0x00000820       0xa0 ./arch/libarch.a(support.o)
+ .debug_loc     0x000008c0      0x2c0 ./arch/libarch.a(interrupts.o)
+ .debug_loc     0x00000b80       0xe0 ./drivers/libdrivers.a(uart.o)
+ .debug_loc     0x00000c60      0x187 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-memset.o)
+ .debug_loc     0x00000de7      0x17c /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-strncpy.o)
+
+.debug_pubnames
+                0x00000000      0x814
+ .debug_pubnames
+                0x00000000       0x8f ../../Source/portable/GCC/OpenRISC/port.o
+ .debug_pubnames
+                0x0000008f       0x71 ../../Source/list.o
+ .debug_pubnames
+                0x00000100      0x36a ../../Source/tasks.o
+ .debug_pubnames
+                0x0000046a       0x64 ../../Source/portable/MemMang/heap_2.o
+ .debug_pubnames
+                0x000004ce       0xbc main.o
+ .debug_pubnames
+                0x0000058a       0x51 ./arch/libarch.a(support.o)
+ .debug_pubnames
+                0x000005db      0x14d ./arch/libarch.a(interrupts.o)
+ .debug_pubnames
+                0x00000728       0xb1 ./drivers/libdrivers.a(uart.o)
+ .debug_pubnames
+                0x000007d9       0x1d /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-memset.o)
+ .debug_pubnames
+                0x000007f6       0x1e /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-strncpy.o)
+
+.debug_pubtypes
+                0x00000000      0x28e
+ .debug_pubtypes
+                0x00000000       0x2e ../../Source/portable/GCC/OpenRISC/port.o
+ .debug_pubtypes
+                0x0000002e       0x69 ../../Source/list.o
+ .debug_pubtypes
+                0x00000097      0x110 ../../Source/tasks.o
+ .debug_pubtypes
+                0x000001a7       0x4c ../../Source/portable/MemMang/heap_2.o
+ .debug_pubtypes
+                0x000001f3       0x22 main.o
+ .debug_pubtypes
+                0x00000215       0x12 ./arch/libarch.a(support.o)
+ .debug_pubtypes
+                0x00000227       0x1b ./arch/libarch.a(interrupts.o)
+ .debug_pubtypes
+                0x00000242       0x12 ./drivers/libdrivers.a(uart.o)
+ .debug_pubtypes
+                0x00000254       0x1d /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-memset.o)
+ .debug_pubtypes
+                0x00000271       0x1d /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-strncpy.o)
+
+.debug_aranges  0x00000000      0x140
+ .debug_aranges
+                0x00000000       0x20 ../../Source/portable/GCC/OpenRISC/port.o
+ .debug_aranges
+                0x00000020       0x20 ../../Source/list.o
+ .debug_aranges
+                0x00000040       0x20 ../../Source/tasks.o
+ .debug_aranges
+                0x00000060       0x20 ../../Source/portable/MemMang/heap_2.o
+ .debug_aranges
+                0x00000080       0x20 main.o
+ .debug_aranges
+                0x000000a0       0x20 ./arch/libarch.a(support.o)
+ .debug_aranges
+                0x000000c0       0x20 ./arch/libarch.a(interrupts.o)
+ .debug_aranges
+                0x000000e0       0x20 ./drivers/libdrivers.a(uart.o)
+ .debug_aranges
+                0x00000100       0x20 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-memset.o)
+ .debug_aranges
+                0x00000120       0x20 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-strncpy.o)
+
+.debug_str      0x00000000     0x110b
+ .debug_str     0x00000000      0x19d ../../Source/portable/GCC/OpenRISC/port.o
+                                0x1c4 (size before relaxing)
+ .debug_str     0x0000019d      0x16f ../../Source/list.o
+                                0x23e (size before relaxing)
+ .debug_str     0x0000030c      0x7f9 ../../Source/tasks.o
+                                0xa03 (size before relaxing)
+ .debug_str     0x00000b05      0x175 ../../Source/portable/MemMang/heap_2.o
+                                0x28d (size before relaxing)
+ .debug_str     0x00000c7a       0x8d main.o
+                                0x205 (size before relaxing)
+ .debug_str     0x00000d07       0xa0 ./arch/libarch.a(support.o)
+                                 0xe5 (size before relaxing)
+ .debug_str     0x00000da7      0x163 ./arch/libarch.a(interrupts.o)
+                                0x228 (size before relaxing)
+ .debug_str     0x00000f0a       0xf8 ./drivers/libdrivers.a(uart.o)
+                                0x13e (size before relaxing)
+ .debug_str     0x00001002       0xa6 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-memset.o)
+                                0x14e (size before relaxing)
+ .debug_str     0x000010a8       0x63 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-strncpy.o)
+                                0x164 (size before relaxing)
+
+.comment        0x00000000       0xd1
+ .comment       0x00000000       0x51 ../../Source/portable/GCC/OpenRISC/port.o
+                                 0x52 (size before relaxing)
+ .comment       0x00000000       0x52 ../../Source/list.o
+ .comment       0x00000000       0x52 ../../Source/tasks.o
+ .comment       0x00000000       0x52 ../../Source/portable/MemMang/heap_2.o
+ .comment       0x00000000       0x52 main.o
+ .comment       0x00000000       0x52 ./arch/libarch.a(support.o)
+ .comment       0x00000000       0x52 ./arch/libarch.a(interrupts.o)
+ .comment       0x00000000       0x52 ./drivers/libdrivers.a(uart.o)
+ .comment       0x00000051       0x80 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-memset.o)
+                                 0x81 (size before relaxing)
+ .comment       0x00000000       0x81 /opt/openrisc/toolchain//or32-elf/lib/libc.a(lib_a-strncpy.o)
