@@ -2,7 +2,7 @@ include ../Makefile.inc
 
 CFLAGS	+= -g
 
-SRC_C = support.c interrupts.c cache.c
+SRC_C = support.c interrupts.c
 SRC_S = reset.S
 
 OBJ_C = $(SRC_C:.c=.o)
