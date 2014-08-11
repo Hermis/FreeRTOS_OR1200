@@ -4,7 +4,7 @@ The FreeRTOS support OpenRISC and Verify for FPGA Board.
 
 FPGA Board:
 
-1.SMIMS Marcube(Xilinx XC6SLX75T)
+1.SMIMS Macube(Xilinx XC6SLX75T)
 
 2.De0_nano(Altera)
 
