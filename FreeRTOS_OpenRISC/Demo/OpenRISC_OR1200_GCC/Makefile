@@ -107,4 +107,8 @@ dshare:
 copy_to_vmshare:
 	cp $(PROG).mif ~/Desktop/vmshare
 
+hexfile:
+	$(OBJCOPY) -O ihex rtosdemo.or32 rtosdemo.ihex
+	./ihex2mif_65536 -f rtosdemo.ihex -o ram0.mif
+	./mif_gen
 

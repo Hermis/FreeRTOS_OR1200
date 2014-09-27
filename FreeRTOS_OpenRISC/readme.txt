@@ -17,5 +17,3 @@ port.
 
 See the readme files in the respective directories for further information.
 
-test
-

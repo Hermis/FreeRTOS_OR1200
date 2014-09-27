@@ -4,12 +4,13 @@
 /*Board information*/
 
 //#define Modelsim
-//#define Marcube
+//#define Macube
 #define De0_nano
 
 #define DC_SIZE 8192
 #define DC_LINE 16
-
+#define GPIO0_BASE              0x91000000
+#define GPIO0_IRQ               3
 
 #ifdef Modelsim
 
@@ -24,7 +25,7 @@
 
 #endif
 
-#ifdef Marcube
+#ifdef Macube
 
 #define SYS_CLK                 48000000
 #define IN_CLK              48000000 
@@ -55,10 +56,8 @@
 
 #undef  GPIO_NUM_CORES
 
-#define GPIO0_BASE		0x91000000
-#define GPIO0_IRQ		3
-
-#define DMA_BASE		0x9a000000
-#define DMA_IRQ			11
+#define DMA_BASE                0x9a000000
+#define DMA_IRQ                 11
 
 #endif
+

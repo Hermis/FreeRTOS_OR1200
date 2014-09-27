@@ -69,9 +69,10 @@
 #include "uart.h"
 
 #include "interrupts.h"
+#include "drivers/gpio.h"
+#include "drivers/de0_gpio.h"
 
-static void vDemoTask(void *pvParameters);
-static void vDemoTask2(void *pvParameters);
+
 
 static void prvSetupHardware(void);
 
@@ -82,49 +83,94 @@ void vApplicationTickHook( void );
 void vApplicationStackOverflowHook( xTaskHandle *pxTask, signed char *pcTaskName );
 void vApplicationMallocFailedHook( void );
 
-xTaskHandle vTask1,vTask2;
+static void DemoTask1(void *pvParameters);
+static void DemoTask2(void *pvParameters);
+
+
+xTaskHandle Task1,Task2;
 
 unsigned int *LED;
-
-
+unsigned int gpio_status;
 
 int main(void)
 {
   	prvSetupHardware();
-
-	LED = 0x3FFFC;
-
-	xTaskCreate(vDemoTask , (signed char *)"vTask0", configMINIMAL_STACK_SIZE  , NULL, 1, &vTask1);
 	
-	xTaskCreate(vDemoTask2 , (signed char *)"vTask1", configMINIMAL_STACK_SIZE  , NULL, 1, &vTask2);
+	xTaskCreate(DemoTask1,(signed char*)"Task1",configMINIMAL_STACK_SIZE,NULL,1,&Task1);
+
+	xTaskCreate(DemoTask2,(signed char*)"Task2",configMINIMAL_STACK_SIZE,NULL,1,&Task2);
 
 	vTaskStartScheduler();
+
+
 	
 	return 0;
 }
 
-static void vDemoTask(void *pvParameters) {
 
-	while(1) {
-		portENTER_CRITICAL();
-		{
-		
-			uart_print_str("Hello vTask1 \n");
-		}
-		portEXIT_CRITICAL();
-	}
+#ifdef Macube
+
+static void DemoTask1(void *pvParameters) {
+
+        while(1) {
+                portENTER_CRITICAL();
+                {
+			GPIO_Set(LED, LED_1);
+                        uart_print_str("Hello vTask1 \n");
+			LED_Delay();
+                }
+                portEXIT_CRITICAL();
+        }
 }
 
-static void vDemoTask2(void *pvParameters) {
-	while(1) 
-	{
-		portENTER_CRITICAL();
-		{
-			uart_print_str("Hello vTask2 \n");
-		}
-		portEXIT_CRITICAL();
-	}
+static void DemoTask2(void *pvParameters) {
+
+        while(1) {
+                portENTER_CRITICAL();
+                {
+                        GPIO_Set(LED, LED_2);
+                        uart_print_str("Hello vTask2 \n");
+                        LED_Delay();
+                }
+                portEXIT_CRITICAL();
+        }
 }
+#endif
+
+#ifdef De0_nano
+
+static void DemoTask1(void *pvParameters) {
+
+        while(1) {
+                portENTER_CRITICAL();
+                {
+			gpio_write(0, 0x00);
+                        uart_print_str("De0 nano Hello vTask1 \n");
+			LED_Delay();
+                }
+                portEXIT_CRITICAL();
+        }
+}
+
+static void DemoTask2(void *pvParameters) {
+
+        while(1) {
+                portENTER_CRITICAL();
+                {
+			gpio_write(0, 0xff);
+                        uart_print_str("De0 nano Hello vTask2 \n");
+                        LED_Delay();
+                }
+                portEXIT_CRITICAL();
+        }
+}
+
+#endif
+
+
+
+
+
 /*-----------------------------------------------------------*/
 void LED_Delay(void)
 {
@@ -139,11 +185,28 @@ void prvSetupHardware( void )
 
 	int_init();
 
+	#ifdef Macube
+
+	LED = GPIO_Init();
+	
+	#endif
+
+	#ifdef De0_nano
+
+	gpio_init(0);
+
+	//LED 1 to 8
+	//1 : output 0: input
+        set_gpio_direction(0, 0xff);
+
+	#endif
+
 }
 /*-----------------------------------------------------------*/
 
 void vApplicationIdleHook( void )
 {
+
 }
 /*-----------------------------------------------------------*/
 

@@ -112,6 +112,7 @@ void align_except(void) {
 }
 
 void illegal_except(void) {
+	uart_print_str("Illegal ! \n\r");
 }
 
 void dtlbmiss_except(void) {

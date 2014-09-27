@@ -3,7 +3,7 @@ include ../Makefile.inc
 INCDIR 	= -I../arch
 CFLAGS	+= $(INCDIR) -g
 
-SRC_C = uart.c
+SRC_C = uart.c de0_gpio.c gpio.c
 SRC_S = 
 
 OBJ_C = $(SRC_C:.c=.o)
